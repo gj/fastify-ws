@@ -1,6 +1,6 @@
 # fastify-ws
 
-<!-- [![Greenkeeper badge](https://badges.greenkeeper.io/fastify/fastify-ws.svg)](https://greenkeeper.io/) -->
+[![Build Status](https://travis-ci.org/gj/fastify-ws.svg?branch=master)](https://travis-ci.org/gj/fastify-ws)
 
 WebSocket support for [Fastify](https://github.com/fastify/fastify) built on the blazing fast [ws](http://npm.im/websocket-stream) library.
 
