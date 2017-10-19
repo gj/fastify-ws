@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/gj/fastify-ws.svg?branch=master)](https://travis-ci.org/gj/fastify-ws)
 
-WebSocket support for [Fastify](https://github.com/fastify/fastify) built on the blazing fast [ws](http://npm.im/websocket-stream) library.
+WebSocket support for [Fastify](https://github.com/fastify/fastify) built on the blazing fast [ws](http://npm.im/ws) and [uws](http://npm.im/uws) libraries.
 
 ## Example
 In `server.js`:
@@ -12,7 +12,8 @@ In `server.js`:
 const fastify = require('fastify')()
 
 fastify.register(require('fastify-ws'), {
-  pingInterval: 10000 // Keep the connection alive by sending ping every 10 seconds (default: 30 seconds)
+  pingInterval: 10000, // Keep the connection alive by sending pings every 10 seconds (default: 30 seconds)
+  wsLibrary: 'uws' // Use the uws library instead of the default ws library
 })
 
 fastify.ready(err => {
@@ -40,6 +41,9 @@ ws.send('WebSockets are awesome!')
 // => undefined
 // LOG: WebSockets are awesome!
 ```
+
+## Notes
+If you choose to use `uws` as your WebSocket library, ensure that you have configured your system properly and understand that the API is a slightly reduced subset of `ws`'s.
 
 ## TODO
 
