@@ -16,7 +16,7 @@ module.exports = fp((fastify, opts, next) => {
 
   wss.on('connection', keepAlive)
 
-  const pingInterval = opts.pingInterval || 30000
+  const pingInterval = Number.parseInt(opts.pingInterval, 10) || 30000
 
   setInterval(() => wss.clients.forEach(ws => {
     if (ws.alive === false) return ws.terminate()
