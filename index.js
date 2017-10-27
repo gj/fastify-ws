@@ -12,22 +12,6 @@ module.exports = fp((fastify, opts, next) => {
     server: fastify.server
   })
 
-  const keepAlive = ws => {
-    ws.alive = true
-    const stayAlive = () => { ws.alive = true }
-    ws.on('pong', stayAlive)
-  }
-
-  wss.on('connection', keepAlive)
-
-  const pingInterval = Number.parseInt(opts.pingInterval, 10) || 30000
-
-  setInterval(() => wss.clients.forEach(ws => {
-    if (ws.alive === false) return ws.terminate()
-    ws.alive = false
-    ws.ping('', false, true)
-  }), pingInterval)
-
   fastify.decorate('wsServer', wss)
 
   next()

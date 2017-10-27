@@ -12,7 +12,6 @@ In `server.js`:
 const fastify = require('fastify')()
 
 fastify.register(require('fastify-ws'), {
-  pingInterval: 10000, // Keep the connection alive by sending pings every 10 seconds (default: 30 seconds)
   wsLibrary: 'uws' // Use the uws library instead of the default ws library
 })
 
