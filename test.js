@@ -14,15 +14,15 @@ test('expose a WebSocket', t => {
   fastify.ready(err => {
     t.error(err)
 
-    fastify.wsServer
-      .on('connection', ws => {
-        ws.send('hello client')
+    fastify.ws
+      .on('connection', socket => {
+        socket.send('hello client')
 
-        ws.on('message', msg => {
+        socket.on('message', msg => {
           t.equal(msg, 'hello server')
 
-          ws.terminate()
-          fastify.wsServer.close(() => fastify.close())
+          socket.terminate()
+          fastify.ws.close(() => fastify.close())
 
           process.exit()
         })

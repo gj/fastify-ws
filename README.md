@@ -12,15 +12,15 @@ In `server.js`:
 const fastify = require('fastify')()
 
 fastify.register(require('fastify-ws'), {
-  wsLibrary: 'uws' // Use the uws library instead of the default ws library
+  library: 'uws' // Use the uws library instead of the default ws library
 })
 
 fastify.ready(err => {
   if (err) throw err
 
-  fastify.wsServer
-    .on('connection', ws => {
-      ws.on('message', msg => ws.send(msg)) // Creates an echo server
+  fastify.ws
+    .on('connection', socket => {
+      socket.on('message', msg => socket.send(msg)) // Creates an echo server
     })
 })
 
