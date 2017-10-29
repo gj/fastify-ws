@@ -11,6 +11,8 @@ test('expose a WebSocket', t => {
 
   fastify.register(fastifyWS)
 
+  fastify.addHook('onClose', (fastify, done) => fastify.ws.close(done))
+
   fastify.ready(err => {
     t.error(err)
 
@@ -21,10 +23,7 @@ test('expose a WebSocket', t => {
         socket.on('message', msg => {
           t.equal(msg, 'hello server')
 
-          socket.terminate()
-          fastify.ws.close(() => fastify.close())
-
-          process.exit()
+          fastify.close()
         })
       })
   })
@@ -37,11 +36,7 @@ test('expose a WebSocket', t => {
     client.on('open', () => {
       client.send('hello server')
 
-      client.onmessage = msg => {
-        t.equal(msg.data, 'hello client')
-
-        client.terminate()
-      }
+      client.onmessage = msg => t.equal(msg.data, 'hello client')
     })
   })
 })
