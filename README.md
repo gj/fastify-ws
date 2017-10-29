@@ -44,10 +44,5 @@ ws.send('WebSockets are awesome!')
 ## Notes
 If you choose to use `uws` as your WebSocket library, ensure that you have configured your system properly and understand that the API is a slightly reduced subset of `ws`'s.
 
-## TODO
-
-* [ ] Get TAP test suite to finish without resorting to `process.exit()`
-
 ## License
-
 Licensed under [MIT](./LICENSE).
