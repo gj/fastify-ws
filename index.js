@@ -14,5 +14,7 @@ module.exports = fp((fastify, opts, next) => {
 
   fastify.decorate('ws', wss)
 
+  fastify.addHook('onClose', (fastify, done) => fastify.ws.close(done))
+
   next()
 })

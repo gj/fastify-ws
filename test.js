@@ -11,8 +11,6 @@ test('expose a WebSocket', t => {
 
   fastify.register(fastifyWS)
 
-  fastify.addHook('onClose', (fastify, done) => fastify.ws.close(done))
-
   fastify.ready(err => {
     t.error(err)
 
