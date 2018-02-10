@@ -5,7 +5,9 @@
 WebSocket support for [Fastify](https://github.com/fastify/fastify) built on the blazing fast [ws](http://npm.im/ws) and [uws](http://npm.im/uws) libraries.
 
 ## Example
+
 In `server.js`:
+
 ```js
 'use strict'
 
@@ -20,7 +22,11 @@ fastify.ready(err => {
 
   fastify.ws
     .on('connection', socket => {
+      console.log('Client connected.')
+
       socket.on('message', msg => socket.send(msg)) // Creates an echo server
+      
+      socket.on('close', () => console.log('Client disconnected.'))
     })
 })
 
@@ -28,6 +34,7 @@ fastify.listen(34567)
 ```
 
 Then run `node server.js` and navigate to `http://localhost:34567` in your browser. In the browser's JavaScript console, open a client-side WebSocket connection:
+
 ```js
 const host = location.origin.replace(/^http/, 'ws')
 const ws = new WebSocket(host)
@@ -35,6 +42,7 @@ ws.onmessage = msg => console.log(msg.data)
 ```
 
 Then, still in the browser console, send some messages to the server and watch as they're echoed back to you:
+
 ```js
 ws.send('WebSockets are awesome!')
 // => undefined
@@ -42,7 +50,9 @@ ws.send('WebSockets are awesome!')
 ```
 
 ## Notes
+
 If you choose to use `uws` as your WebSocket library, ensure that you have configured your system properly and understand that the API is a slightly reduced subset of `ws`'s.
 
 ## License
+
 Licensed under [MIT](./LICENSE).
