@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/gj/fastify-ws#readme",
   "devDependencies": {
+    "eslint": "^4.17.0",
     "fastify": "^0.30.2",
     "pre-commit": "^1.2.2",
     "snazzy": "^7.0.0",
