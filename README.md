@@ -20,12 +20,14 @@ fastify.register(require('fastify-ws'), {
 fastify.ready(err => {
   if (err) throw err
 
+  console.log('Server started.')
+
   fastify.ws
     .on('connection', socket => {
       console.log('Client connected.')
 
       socket.on('message', msg => socket.send(msg)) // Creates an echo server
-      
+
       socket.on('close', () => console.log('Client disconnected.'))
     })
 })
