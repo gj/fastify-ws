@@ -17,4 +17,7 @@ module.exports = fp((fastify, opts, next) => {
   fastify.addHook('onClose', (fastify, done) => fastify.ws.close(done))
 
   next()
+}, {
+  fastify: '>=1.x',
+  name: 'fastify-ws'
 })
