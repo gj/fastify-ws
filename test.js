@@ -40,3 +40,17 @@ test('expose a WebSocket', t => {
     })
   })
 })
+
+test('Error | invalid library option', t => {
+  t.plan(1)
+
+  const fastify = require('fastify')()
+  const fastifyWS = require('.')
+
+  fastify.register(fastifyWS, { library: 'invalid' })
+
+  fastify.listen(0, err => {
+    fastify.close()
+    t.equal(err.message, `Invalid "library" option`)
+  })
+})
