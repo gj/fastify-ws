@@ -35,6 +35,8 @@ test('expose a WebSocket', t => {
       client.send('hello server')
 
       client.onmessage = msg => t.equal(msg.data, 'hello client')
+
+      client.close()
     })
   })
 })
