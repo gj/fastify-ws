@@ -18,6 +18,6 @@ module.exports = fp((fastify, opts, next) => {
 
   next()
 }, {
-  fastify: '>=1.x',
+  fastify: '1.x',
   name: 'fastify-ws'
 })
