@@ -35,6 +35,22 @@ test('expose a WebSocket', t => {
       client.send('hello server')
 
       client.onmessage = msg => t.equal(msg.data, 'hello client')
+
+      client.close()
     })
+  })
+})
+
+test('Error | invalid library option', t => {
+  t.plan(1)
+
+  const fastify = require('fastify')()
+  const fastifyWS = require('.')
+
+  fastify.register(fastifyWS, { library: 'invalid' })
+
+  fastify.listen(0, err => {
+    fastify.close()
+    t.equal(err.message, `Invalid "library" option`)
   })
 })
