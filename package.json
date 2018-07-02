@@ -17,6 +17,9 @@
     "uws"
   ],
   "author": "Gabe Jackson <gj@mail.co.de>",
+  "contributors": [
+    "lependu <lependu@protonmail.com>"
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/gj/fastify-ws/issues"
