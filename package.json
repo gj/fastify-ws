@@ -23,8 +23,8 @@
   },
   "homepage": "https://github.com/gj/fastify-ws#readme",
   "devDependencies": {
-    "eslint": "^4.17.0",
-    "fastify": "^1.4.0",
+    "eslint": "^4.19.1",
+    "fastify": "^1.7.0",
     "pre-commit": "^1.2.2",
     "snazzy": "^7.0.0",
     "standard": "^10.0.3",
@@ -32,9 +32,9 @@
   },
   "dependencies": {
     "bufferutil": "^3.0.5",
-    "fastify-plugin": "^1.0.1",
+    "fastify-plugin": "^1.2.0",
     "utf-8-validate": "^4.0.2",
-    "uws": "^10.148.0",
-    "ws": "^5.1.1"
+    "uws": "10.148.0",
+    "ws": "^5.2.1"
   }
 }
