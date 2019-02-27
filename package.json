@@ -1,6 +1,6 @@
 {
   "name": "fastify-ws",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Basic WebSocket support for Fastify built on the blazing fast ws and uws libraries.",
   "main": "index.js",
   "scripts": {
