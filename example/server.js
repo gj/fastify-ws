@@ -2,9 +2,7 @@
 
 const fastify = require('fastify')()
 
-fastify.register(require('../.'), {
-  library: 'uws' // Use the uws library instead of the default ws library
-})
+fastify.register(require('../.'))
 
 fastify.ready(err => {
   if (err) throw err

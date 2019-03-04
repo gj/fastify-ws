@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/gj/fastify-ws.svg?branch=master)](https://travis-ci.org/gj/fastify-ws) [![npm version](https://badge.fury.io/js/fastify-ws.svg)](https://www.npmjs.com/package/fastify-ws)
 
-WebSocket support for [Fastify](https://github.com/fastify/fastify) built on the blazing fast [ws](http://npm.im/ws) and [uws](http://npm.im/uws) libraries.
+WebSocket support for [Fastify](https://github.com/fastify/fastify) built on the [ws](http://npm.im/ws) and [uws](http://npm.im/uws) libraries.
 
 ## Example
 
@@ -13,9 +13,7 @@ In `server.js`:
 
 const fastify = require('fastify')()
 
-fastify.register(require('fastify-ws'), {
-  library: 'uws' // Use the uws library instead of the default ws library
-})
+fastify.register(require('fastify-ws'))
 
 fastify.ready(err => {
   if (err) throw err
@@ -53,7 +51,9 @@ ws.send('WebSockets are awesome!')
 
 ## Notes
 
-If you choose to use `uws` as your WebSocket library, ensure that you have configured your system properly and understand that the API is a slightly reduced subset of `ws`'s.
+The creator of `uws` has ceased development on `uws` and started working on their new project, [uWebSockets.js](https://github.com/uNetworking/uWebSockets.js). If you want high-performance web socket support in Fastify, the last real release of `uws` (10.148.1) is probably your best bet, but given that it is now an abandoned project I can't recommend anyone use it for any non-throwaway projects. If you're using this library, I'd recommend you stick with the default `ws` option.
+
+In addition, if you choose to use `uws` as your WebSocket library, ensure that you have configured your system properly and understand that the API is a slightly reduced subset of `ws`'s.
 
 ## License
 
