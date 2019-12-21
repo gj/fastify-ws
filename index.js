@@ -11,13 +11,13 @@ module.exports = fp((fastify, opts, next) => {
 
   const wsOpts = {
     server: fastify.server
-  };
-
-  if (opts.path !== undefined) {
-    wsOpts.path = opts.path;
   }
 
-  const wss = new WebSocketServer(wsOpts);
+  if (opts.path !== undefined) {
+    wsOpts.path = opts.path
+  }
+
+  const wss = new WebSocketServer(wsOpts)
 
   fastify.decorate('ws', wss)
 
