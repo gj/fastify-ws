@@ -8,9 +8,16 @@ module.exports = fp((fastify, opts, next) => {
   if (lib !== 'ws' && lib !== 'uws') return next(new Error('Invalid "library" option'))
 
   const WebSocketServer = require(lib).Server
-  const wss = new WebSocketServer({
+
+  const wsOpts = {
     server: fastify.server
-  })
+  }
+
+  if (opts.path !== undefined) {
+    wsOpts.path = opts.path
+  }
+
+  const wss = new WebSocketServer(wsOpts)
 
   fastify.decorate('ws', wss)
 
